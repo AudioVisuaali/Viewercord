@@ -12,20 +12,17 @@ export default class MainAction extends Component {
         const client = new Discord.Client();
     
         client.on('message', msg => {
-
+            
             if ( this.props.settings.allowPrivate || msg.channel.type !== "dm" ) {
-
+                
                 if ( this.props.settings.allowBots || !msg.author.bot) {
 
                     const messages = this.state.messages;
-
                     messages.push( msg );
-        
                     this.setState({ messages: messages });   
+                    
                 }
-
             }
-
         });
       
         client.login( this.props.token );
